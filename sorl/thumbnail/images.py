@@ -118,6 +118,7 @@ class ImageFile(BaseImageFile):
         return self.storage.url(self.name)
 
     def read(self):
+        return settings.S3_UPLOAD_URL + self.name
         return self.storage.open(self.name).read()
 
     def write(self, content):
@@ -130,6 +131,7 @@ class ImageFile(BaseImageFile):
         return self.storage.delete(self.name)
 
     def serialize_storage(self):
+        return 'storages.backends.s3boto.S3BotoStorage'
         if isinstance(self.storage, LazyObject):
             # if storage is wrapped in a lazy object we need to get the real
             # thing.
