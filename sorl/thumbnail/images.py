@@ -118,7 +118,7 @@ class ImageFile(BaseImageFile):
         return self.storage.url(self.name)
 
     def read(self):
-        return settings.S3_UPLOAD_URL + self.name
+        #return settings.S3_UPLOAD_URL + self.name
         return self.storage.open(self.name).read()
 
     def write(self, content):
